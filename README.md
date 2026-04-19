@@ -7,8 +7,16 @@ A minimal Bubble Tea TUI for [skate](https://github.com/charmbracelet/skate).
 Requirements:
 
 - `go`
+- `skate`
 
-macOS and Linux:
+Install with Go:
+
+```
+go install github.com/charmbracelet/skate@latest # skate is required
+go install github.com/ESHAYAT102/skater@latest
+```
+
+MacOS and Linux:
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/install.sh | sh
