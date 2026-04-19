@@ -1,4 +1,4 @@
-module staker
+module github.com/ESHAYAT102/staker
 
 go 1.26.2
 
