@@ -1,4 +1,4 @@
-module github.com/ESHAYAT102/staker
+module github.com/ESHAYAT102/skater
 
 go 1.26.2
 
