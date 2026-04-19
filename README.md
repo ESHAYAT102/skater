@@ -1,3 +1,4 @@
+
 # skater
 
 A minimal Bubble Tea TUI for [skate](https://github.com/charmbracelet/skate).
@@ -11,8 +12,8 @@ Requirements:
 
 Install with Go:
 
-```
-go install github.com/charmbracelet/skate@latest # skate is required
+```sh
+go install github.com/charmbracelet/skate@latest #skate is required
 go install github.com/ESHAYAT102/skater@latest
 ```
 
