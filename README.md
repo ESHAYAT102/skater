@@ -23,7 +23,6 @@ It also asks before installing `skate` if it is missing.
 Manual install with Go:
 
 ```sh
-go install github.com/charmbracelet/skate@latest #skate is required
 git clone https://github.com/ESHAYAT102/skater.git
 cd skater
 go build -o "$HOME/.local/bin/skater" .
