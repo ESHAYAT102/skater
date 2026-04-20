@@ -1,7 +1,8 @@
-
 # skater
 
 A minimal Bubble Tea TUI for [skate](https://github.com/charmbracelet/skate).
+
+![skater demo](skater.gif)
 
 ## Install
 
