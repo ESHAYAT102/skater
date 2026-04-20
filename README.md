@@ -56,6 +56,32 @@ $HOME\.local\bin\skater.exe
 $HOME\.local\bin\skate.exe
 ```
 
+## Uninstall
+
+The uninstaller removes `skater` from the same user binary directory used by the installer. It leaves `skate` installed by default because other tools may use it.
+
+MacOS and Linux:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/uninstall.sh | sh
+```
+
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/uninstall.ps1 | iex
+```
+
+If you also want to remove the `skate` binary that the installer may have installed alongside `skater`, pass the optional flag:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/uninstall.sh | sh -s -- --with-skate
+```
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/ESHAYAT102/skater/main/scripts/uninstall.ps1))) -WithSkate
+```
+
 ## Run
 
 ```sh

@@ -22,6 +22,8 @@ const (
 	valueFocus
 	tableFocus
 	focusCount
+
+	tableCellHorizontalFrameSize = 4
 )
 
 type keyMap struct {
@@ -340,7 +342,7 @@ func (m *model) resize() {
 	m.table.SetWidth(contentWidth)
 
 	keyWidth := min(max(12, m.desiredKeyWidth()), max(18, contentWidth/3))
-	valueWidth := max(12, contentWidth-keyWidth-5)
+	valueWidth := max(12, contentWidth-keyWidth-tableCellHorizontalFrameSize)
 	m.keyColumnWidth = keyWidth
 	m.valueColumnWidth = valueWidth
 	m.keyInput.Width = keyWidth
@@ -361,7 +363,7 @@ func (m model) desiredWidth() int {
 	keyWidth := min(max(12, m.desiredKeyWidth()), 24)
 	valueWidth := max(12, m.desiredValueWidth())
 
-	return max(52, keyWidth+valueWidth+5)
+	return max(52, keyWidth+valueWidth+tableCellHorizontalFrameSize)
 }
 
 func (m model) desiredKeyWidth() int {
