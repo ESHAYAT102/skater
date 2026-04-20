@@ -30,6 +30,10 @@ Sleep 500ms
 
 Tab
 
+Sleep 500ms
+
+Down
+
 Down
 
 Sleep 1s
