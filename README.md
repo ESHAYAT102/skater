@@ -21,6 +21,7 @@ If `go` or `git` is missing, the installer will ask before installing them with 
 It also asks before installing `skate` if it is missing.
 
 Manual install with Go:
+[skate](https://github.com/charmbracelet/skate) is required
 
 ```sh
 git clone https://github.com/ESHAYAT102/skater.git
