@@ -24,6 +24,8 @@ Sleep 500ms
 
 Type "hello from skater!"
 
+Sleep 500ms
+
 Enter
 
 Sleep 500ms
