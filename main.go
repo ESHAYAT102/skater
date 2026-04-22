@@ -341,8 +341,7 @@ func (m *model) resize() {
 	m.help.Width = contentWidth
 	m.table.SetWidth(contentWidth)
 
-	keyWidth := min(max(12, m.desiredKeyWidth()), max(18, contentWidth/3))
-	valueWidth := max(12, contentWidth-keyWidth-tableCellHorizontalFrameSize)
+	keyWidth, valueWidth := m.columnWidths(contentWidth)
 	m.keyColumnWidth = keyWidth
 	m.valueColumnWidth = valueWidth
 	m.keyInput.Width = keyWidth
@@ -360,10 +359,34 @@ func (m *model) resize() {
 }
 
 func (m model) desiredWidth() int {
-	keyWidth := min(max(12, m.desiredKeyWidth()), 24)
+	keyWidth := max(12, m.desiredKeyWidth())
 	valueWidth := max(12, m.desiredValueWidth())
 
 	return max(52, keyWidth+valueWidth+tableCellHorizontalFrameSize)
+}
+
+func (m model) columnWidths(contentWidth int) (int, int) {
+	const (
+		minKeyWidth   = 12
+		minValueWidth = 12
+	)
+
+	available := max(0, contentWidth-tableCellHorizontalFrameSize)
+	keyWidth := max(minKeyWidth, m.desiredKeyWidth())
+	valueWidth := max(minValueWidth, m.desiredValueWidth())
+
+	if keyWidth+valueWidth <= available {
+		return keyWidth, available - keyWidth
+	}
+
+	if available <= minKeyWidth+minValueWidth {
+		return minKeyWidth, minValueWidth
+	}
+
+	valueWidth = max(minValueWidth, min(valueWidth, available-keyWidth))
+	keyWidth = max(minKeyWidth, available-valueWidth)
+
+	return keyWidth, valueWidth
 }
 
 func (m model) desiredKeyWidth() int {
