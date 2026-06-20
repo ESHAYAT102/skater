@@ -92,3 +92,34 @@ func TestResizeColumnsUseTerminalMaxWhenContentTooWide(t *testing.T) {
 		t.Fatalf("column widths plus cell padding = %d, table width = %d", got, m.table.Width())
 	}
 }
+
+func TestResizeTableHeightGrowsWithRowsAndCapsAtThirtyTwo(t *testing.T) {
+	m := newModel()
+	m.width = 80
+	m.height = 50
+
+	rows := make([]table.Row, 14)
+	for i := range rows {
+		rows[i] = table.Row{"key", "value"}
+	}
+	m.table.SetRows(rows)
+	m.resize()
+
+	if got := m.table.Height(); got != 14 {
+		t.Fatalf("viewport height = %d, expected 14", got)
+	}
+	if got := lipgloss.Height(m.table.View()); got != 16 {
+		t.Fatalf("table height = %d, expected 16", got)
+	}
+
+	rows = make([]table.Row, 40)
+	for i := range rows {
+		rows[i] = table.Row{"key", "value"}
+	}
+	m.table.SetRows(rows)
+	m.resize()
+
+	if got := lipgloss.Height(m.table.View()); got != 32 {
+		t.Fatalf("table height = %d, expected 32", got)
+	}
+}

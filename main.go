@@ -351,10 +351,11 @@ func (m *model) resize() {
 		{Title: "Value", Width: valueWidth},
 	})
 
-	tableHeight := min(max(5, m.height-10), 9)
-	if tableHeight < 5 {
-		tableHeight = 5
-	}
+	// ponytail: grow with row count, capped at 32 so the table doesn't eat the screen.
+	headerHeight := lipgloss.Height(m.table.View()) - m.table.Height()
+	tableHeight := len(m.table.Rows()) + headerHeight
+	tableHeight = min(max(5, tableHeight), 32)
+	tableHeight = min(tableHeight, max(5, m.height-10))
 	m.table.SetHeight(tableHeight)
 }
 
